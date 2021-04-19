@@ -1,6 +1,0 @@
-Discord Bot Information for Development:
-OAuth2: 
-	https://discord.com/api/oauth2/authorize?client_id=830317541959794708&permissions=2151147584&scope=bot
-_________________________________________________________________________________________________________________________
-Bot Token:
-	ODMwMzE3NTQxOTU5Nzk0NzA4.YHE7eA.AYTOd_PF11AFXOrQn1-HXb4QJCQ
