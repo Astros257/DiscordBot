@@ -27,7 +27,9 @@ client.on("message", async (msg) => {
 
   if (msg.content === "!assit") {
     msg.reply(
-      "Yes Hello I am a bot that will play an intro song for you when you joni a voice channel Just use !goin"
+      "Yes Hello I am a bot that will play an intro song for you \n" +
+      "$set: will include you one my stalker list \n" +
+      "$settc: will set the text channel where I will send messages to"
     );
   }
 
@@ -79,23 +81,30 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   let oldUserChannel = client.channels.cache.get(oldChannelID)// newMember.channelID;
 
   //console.log(`NewMember: ${newUserChannel} oldMember: ${oldUserChannel}`);
-  console.log(newMember);
+ // console.log(newMember);
 
   
   if(oldUserChannel === undefined && newUserChannel !== undefined) //don't remove ""
   { 
     // User Joins a voice channel
-    console.clear();
-    console.log("Joined vc with id "+newUserChannel);
-
+    //console.clear();
+    //console.log("Joined vc with id "+newUserChannel);
+    console.log(`${newUserChannel}  ${oldUserChannel}`);
     const connection = newUserChannel.join();
     if(botTextChannel !== '' || botTextChannel !== undefined){
-      client.channels.cache.get(botTextChannel.id).send(`${newMember.member.user} has joned: ${newUserChannel}`);
+      if(botTextChannel != null){
+        client.channels.cache.get(botTextChannel.id).send(`${newMember.member.user} has joned: ${newUserChannel}`);
+      }
+      else
+      {
+        console.log("No Voice Channel is set");
+      }
     }
       
   }
   else if(newUserChannel === undefined){
       // User leaves a voice channel
       console.log("Left vc");
+      client.channels.cache.get(botTextChannel.id).send(`${oldMember.member.user} has left: ${oldUserChannel}`);
   }
 });
